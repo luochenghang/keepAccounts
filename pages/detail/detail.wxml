@@ -1,0 +1,37 @@
+<view class="mx-top">
+  <view class="selectDate" data-nickname="{{nickname}}">
+    <picker mode="date" fields="month" value="{{date}}" bindchange="bindDateChange">
+      <view class="year">{{year}}年</view>
+      <view class="month">{{month}}月
+        <image src="../../imges/down.png" />
+      </view>
+    </picker>
+  </view>
+  <view class="shouru">
+    <text>收入</text>
+    <view>{{in_money}}</view>
+  </view>
+  <view class="zhichu">
+    <text>支出</text>
+    <view>{{out_money}}</view>
+  </view>
+</view>
+<view wx:for="{{mx_list}}" wx:key="date">
+  <view class="mx">
+    <text>{{item.date}}</text>
+  </view>
+  <view wx:for="{{item.icon_list}}" wx:key='index' wx:for-item="cell">
+    <view class="mx-mx">
+      <button class="btn" style="width:100%" bindtap="toDetail" data-date="{{item.date}}" data-icon_name="{{cell.icon_name}}" data-remark="{{cell.remark}}" data-icon_type="{{cell.icon_type}}" data-money="{{cell.money}}" data-icon_url="{{cell.icon_url}}" data-nid="{{cell.nid}}">
+        <view>
+          <image class="mx-img" src="{{cell.icon_url}}"></image>
+        </view>
+        <view class="text-box">
+          <text class="mx-name">{{cell.icon_name}}</text>
+          <text>{{cell.remark}}</text>
+          <text class="mx-num">{{cell.money}}</text>
+        </view>
+      </button>
+    </view>
+  </view>
+</view>

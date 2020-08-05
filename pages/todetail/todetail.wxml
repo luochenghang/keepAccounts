@@ -1,0 +1,34 @@
+<!--pages/todetail/todetail.wxml-->
+<view class="top">
+  <view class="icon_img">
+    <image class="icon_url" src="{{icon_url}}"></image>
+  </view>
+  <view class="icon_name">
+    <text>{{icon_name}}</text>
+  </view>
+</view>
+
+<view class="dt-box">
+  <view class="type">
+    <text class="key">类型</text>
+    <text class="value">{{icon_type}}</text>
+  </view>
+  <view class="type">
+    <text class="key">金额</text>
+    <text class="value">{{money}}</text>
+  </view>
+  <view class="type">
+    <text class="key">日期</text>
+    <text class="value">{{date}}</text>
+  </view>
+  <view class="type">
+    <text class="key">备注</text>
+    <text class="value">{{remark}}</text>
+  </view>
+</view>
+
+<view class="bottom">
+  <text class="edit" bindtap="edit">编辑</text>
+  <text class="line">|</text>
+  <text class="del" bindtap="del">删除</text>
+</view>

@@ -1,0 +1,46 @@
+<!--pages/wode/wode.wxml-->
+<view class="top">
+  <view class="user">
+    <image data-userimg="{{userimg}}" src="{{userimg}}" class="userimg"></image>
+  </view>
+
+  <view class="username">
+    <text data-nickname="{{nickname}}">{{nickname}}</text>
+  </view>
+
+</view>
+
+<view class="fun">
+  <view>
+    <button class="item" style="width: 100%;">
+
+    <image class="icon" src="../../imges/dingshi.svg"></image>
+    <view class="ability">
+      <text>定时提醒</text>
+      <image class="right" src="../../imges/right.svg"></image>
+    </view>
+    </button>
+  </view>
+
+  <view>
+    <button class="item" style="width: 100%;" open-type="feedback">
+      <image class="icon" src="../../imges/fankui.svg"></image>
+      <view class="ability">
+        <text>意见反馈</text>
+        <image class="right" src="../../imges/right.svg"></image>
+      </view>
+    </button>
+  </view>
+
+  <view>
+    <button class="item" style="width: 100%;">
+
+    <image class="icon" src="../../imges/guanyu.svg"></image>
+    <view class="ability">
+      <text>关于记账宝</text>
+      <image class="right" src="../../imges/right.svg"></image>
+    </view>
+    </button>
+  </view>
+
+</view>

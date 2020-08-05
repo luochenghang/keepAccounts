@@ -1,0 +1,89 @@
+<!--pages/mbook/addwater.wxml-->
+<form bind:submit="formSubmit" report-submit="true" bindreset="formReset">
+  <view class="nav-top">
+    <view class='nav'>
+      <view class='nav-item {{current == 0 ? "nav-active" : ""}}' bindtap='outClick' data-item='0'>
+        支出
+      </view>
+      <view class='nav-item  {{current == 1 ? "nav-active" : ""}}' bindtap="inClick" data-item='1'>
+        收入
+      </view>
+    </view>
+  </view>
+
+  <view class='content' current='{{current}}' bindchange='changeCurrent'>
+    <!-- 支出 -->
+    <scroll-view class='jz-item' scroll-y='true' >
+      <view class="item-wrapper">
+        <view class='item' >
+          <image class='red' bindtap='iconClick' data-name='{{item.name}}' data-url='{{item.url}}' data-id='{{index}}' src='/imges/icon/food.svg'></image>
+          <text>餐饮</text>
+        </view>
+
+        <view class='item' >
+          <image class='blue' bindtap='iconClick' data-name='{{item.name}}' data-url='{{item.url}}' data-id='{{index}}' src='/imges/icon/food.svg'></image>
+          <text>餐饮</text>
+        </view>
+      </view>
+    </scroll-view>
+
+    <!-- <scroll-view class='jz-item' scroll-y='true' hidden="{{current!='0'}}">
+      <view class="item-wrapper">
+        <view class='item' wx:for="{{out_iconList}}" wx:key="{{indexbgh}}">
+          <image class='{{data_out.iconSelected === index ? "red": "blue"}}' bindtap='iconClick' data-name='{{item.name}}' data-url='{{item.url}}' data-id='{{index}}' src='{{item.url}}'></image>
+          <text>{{item.name}}</text>
+        </view>
+      </view>
+    </scroll-view> -->
+
+    <!-- 收入 -->
+    <scroll-view class='jz-item' scroll-y='true' hidden="{{current!='1'}}">
+      <view class="item-wrapper">
+        <view class='item' wx:for="{{in_iconList}}" wx:key="{{index}}">
+          <image class='{{data_in.iconSelected === index ? "red": "blue"}}' bindtap='iconClick' data-name='{{item.name}}' data-url='{{item.url}}' data-id='{{index}}' src='{{item.url}}'></image>
+          <text>{{item.name}}</text>
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+</form>
+
+<view class="jz-input">
+  <view class='jz-input-info-wrap'>
+    <input value='{{remark}}' bindinput="remarkInput" class='jz-input-remark-input' placeholder='备注:'> </input>
+     <view class="info-money">{{value===''?"0.00":value}}</view>
+  </view>
+
+
+  <!-- 数字输入 -->
+  <view class='btn-input-wrap'>
+    <view class='btn-num-wrap'>
+      <view class='btn-num jz-input-7' data-num='7' data-type='num' bindtap='numInput' hover-class="btn-hover">7</view>
+      <view class='btn-num jz-input-8' data-num='8' data-type='num' bindtap='numInput' hover-class="btn-hover">8</view>
+      <view class='btn-num jz-input-9' data-num='9' data-type='num' bindtap='numInput' hover-class="btn-hover">9</view>
+      <view class='btn-num jz-input-4' data-num='4' data-type='num' bindtap='numInput' hover-class="btn-hover">4</view>
+      <view class='btn-num jz-input-5' data-num='5' data-type='num' bindtap='numInput' hover-class="btn-hover">5</view>
+      <view class='btn-num jz-input-6' data-num='6' data-type='num' bindtap='numInput' hover-class="btn-hover">6</view>
+      <view class='btn-num jz-input-1' data-num='1' data-type='num' bindtap='numInput' hover-class="btn-hover">1</view>
+      <view class='btn-num jz-input-2' data-num='2' data-type='num' bindtap='numInput' hover-class="btn-hover">2</view>
+      <view class='btn-num jz-input-3' data-num='3' data-type='num' bindtap='numInput' hover-class="btn-hover">3</view>
+      <view class='btn-num jz-input-dot' data-num='.' data-type='num' bindtap='numInput' hover-class="btn-hover">.</view>
+      <view class='btn-num jz-input-0' data-num='0' data-type='num' bindtap='numInput' hover-class="btn-hover">0</view>
+      <view class='btn-num jz-input-del' bindtap='numInput' data-type='del' hover-class="btn-hover">del</view>
+    </view>
+
+    <view class='btn-op-wrap'>
+      <view class='btn-op jz-input-empty'>
+        <picker mode="date" value="{{date}}" bindchange="bindDateChange">
+          <view>{{date}}</view>
+        </picker>
+      </view>
+      <view class='btn-op jz-input-empty' bindtap='numInput' data-type='empty' bindtap='numInput' hover-class="btn-hover">清空</view>
+      <view class='btn-op jz-input-ok' data-nick_name="{{nick_name}}" data-type='{{icon_type}}' data-url="{{icon_url}}" data-name="{{icon_name}}" bindtap='ok' hover-class="btn-hover">保存</view>
+    </view>
+  </view>
+</view>
+
+<!-- 
+<jz-input bind:numChange="numChange" initDate='{{initDate}}' accountType='{{accountType}}' initRemark='{{remark}}' initValue='{{value}}' bind:submit='submit'>
+</jz-input> -->

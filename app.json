@@ -1,0 +1,57 @@
+{
+  "pages": [
+    "pages/login/login",
+    "pages/regist/index",
+    "pages/findpassword/index",
+    "pages/keep_accounts/keep_accounts",
+    "pages/detail/detail",
+    "pages/chart/chart",
+    "pages/bill/bill",
+    "pages/mine/mine",
+    "pages/todetail/todetail"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#8EC6C6",
+    "navigationBarTitleText": "记账",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#a9b7b7",
+    "selectedColor": "#2c2c2c",
+    "borderStyle": "black",
+    "list": [
+      {
+        "selectedIconPath": "images/mingxi2.png",
+        "iconPath": "images/mingxi1.png",
+        "pagePath": "pages/detail/detail",
+        "text": "明细"
+      },
+      {
+        "selectedIconPath": "images/tubiao2.png",
+        "iconPath": "images/tubiao1.png",
+        "pagePath": "pages/chart/chart",
+        "text": "图表"
+      },{
+        "selectedIconPath": "images/jizhang2.png",
+        "iconPath": "images/jizhang1.png",
+        "pagePath": "pages/keep_accounts/keep_accounts",
+        "text": "记账"
+      },
+      {
+        "selectedIconPath": "images/zhangdan2.png",
+        "iconPath": "images/zhangdan1.png",
+        "pagePath": "pages/bill/bill",
+        "text": "账单"
+      },
+      {
+        "selectedIconPath": "images/wode2.png",
+        "iconPath": "images/wode1.png",
+        "pagePath": "pages/mine/mine",
+        "text": "我的"
+      }
+    ]
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

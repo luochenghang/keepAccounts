@@ -1,0 +1,80 @@
+/* pages/wode/wode.wxss */
+page {
+  background-color: #f7f7f7;
+}
+.top {
+  height: 360rpx;
+  width: 100%;
+  background-color: #8EC6C6;
+}
+
+.item{
+  margin-top: 0; 
+  background-color: #ffffff;
+}
+.item::after {
+  border: none;
+  border-radius: 0;
+}
+
+.user{
+  display: flex;
+
+align-items: center;
+
+justify-content: center;
+}
+
+.userimg {
+  margin-top: 20rpx;
+  width: 150rpx;
+  height: 150rpx;
+  border-radius: 50%;
+}
+
+.username {
+  margin-top: 20rpx;
+  font-size: 28rpx;
+  text-align: center;
+  color: black;
+}
+
+.fun {
+  /* margin-top: 20rpx; */
+  height: 300rpx;
+  width: 100%;
+  background-color: #fff;
+  border-top: 1rpx solid #ececec;
+}
+
+.icon{
+  width: 40rpx;
+  height: 40rpx;
+  padding: 20rpx;
+  float: left;
+  margin-left: 20rpx; 
+
+}
+.right{
+  width: 30rpx;
+  height: 30rpx;
+  padding: 20rpx;
+  margin-right: 30rpx;
+  margin-top: 8rpx;
+  float: right
+}
+
+.ability{
+  height: 80rpx;
+  /* width: 500rpx; */
+  border-bottom: 1rpx solid #ececec; 
+}
+
+
+.ability text{
+  float: left;
+  /* background-color: red; */
+  border-bottom: 1rpx solid #ececec;
+  line-height: 80rpx;
+  margin-left: 20rpx; 
+}
