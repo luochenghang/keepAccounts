@@ -40,6 +40,7 @@
 .key, .value{
   line-height: 80rpx;
   color: #918989;
+  float: left;
   /* margin-left: 20rpx;  */
 }
 .value{

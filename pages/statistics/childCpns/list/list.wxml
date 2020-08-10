@@ -1,0 +1,29 @@
+<!--pages/statistics/childCpns/list/list.wxml-->
+<wxs src="./list.wxs" module="tools"/>
+
+<view wx:if="{{addPage.length === 0 }}" class="tip">
+  <view>还没有可统计账单</view>
+  <view class="tip_btn" bindtap="handleClick">
+    <text>记一笔</text>
+    <image src="/images/arrow_right_active.png"></image>
+  </view>
+</view>
+<!-- 账单详情页 -->
+<scroll-view class="statistics_list"
+              scroll-y
+              style="width: 100%;"
+              wx:if="{{currentIndex === 0 && addPage.length !== 0}}"
+>
+  <view class="list_wrap"
+        wx:for="{{tools.merge(addPage)}}"
+        wx:key="index"
+  >
+    <image src="{{item.icon}}" style="background-color:{{item.iconBgcolor}}"></image>
+    <view class="list_info">
+      <text>{{item.iconName}}</text>
+      <text class="per">{{tools.per(item.moneyValue, addPage)}}</text>
+    </view>
+  </view>
+</scroll-view>
+
+

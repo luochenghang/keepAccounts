@@ -1,29 +1,36 @@
 <!--pages/todetail/todetail.wxml-->
 <view class="top">
   <view class="icon_img">
-    <image class="icon_url" src="{{icon_url}}"></image>
+    <image class="icon_url" src="{{bill.imgUrl}}"></image>
   </view>
   <view class="icon_name">
-    <text>{{icon_name}}</text>
+    <text>{{bill.name}}</text>
   </view>
 </view>
 
 <view class="dt-box">
   <view class="type">
     <text class="key">类型</text>
-    <text class="value">{{icon_type}}</text>
+    <text class="value">{{bill.type==1?"支出":"收入"}}</text>
   </view>
   <view class="type">
-    <text class="key">金额</text>
-    <text class="value">{{money}}</text>
+    <text class="key">金额</text><input bindinput="moneyInput" style="margin-top: 10px;" type="number" class="value" value="{{bill.money>0?bill.money:-bill.money}}" />
+    
   </view>
   <view class="type">
     <text class="key">日期</text>
-    <text class="value">{{date}}</text>
+    <!-- <text class="value">{{bill.createDate}}</text> -->
+    <view class="value">
+    <picker  mode="date" value="{{bill.createDate}}" bindchange="bindDateChange">
+          <view>{{bill.createDate}}</view>
+        </picker>
+    </view>
+    
   </view>
   <view class="type">
     <text class="key">备注</text>
-    <text class="value">{{remark}}</text>
+    <!-- <text class="value">{{bill.remake}}</text> -->
+    <input type="text" bindinput="remakeInput" style="margin-top: 10px;" class="value" value="{{bill.remake}}" /> 
   </view>
 </view>
 

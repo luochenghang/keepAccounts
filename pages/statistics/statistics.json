@@ -1,0 +1,12 @@
+{
+  "usingComponents": {
+    "pie": "./childCpns/pie/pie",
+    "line": "./childCpns/line/line",
+    "list": "./childCpns/list/list",
+    "ec-canvas": "/ec-canvas/ec-canvas"
+  },
+  "navigationBarBackgroundColor": "#41C6AD",
+  "navigationBarTitleText": "统计",
+  "navigationBarTextStyle": "white",
+  "enablePullDownRefresh": false
+}

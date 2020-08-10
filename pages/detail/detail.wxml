@@ -3,35 +3,48 @@
     <picker mode="date" fields="month" value="{{date}}" bindchange="bindDateChange">
       <view class="year">{{year}}年</view>
       <view class="month">{{month}}月
-        <image src="../../imges/down.png" />
+        <image src="/images/down.png" />
       </view>
     </picker>
   </view>
   <view class="shouru">
     <text>收入</text>
-    <view>{{in_money}}</view>
+    <view>{{we.toFixed(UserBillsInfo.totalEarn)}}</view>
   </view>
   <view class="zhichu">
     <text>支出</text>
-    <view>{{out_money}}</view>
+    <view>{{we.toFixed(-UserBillsInfo.totalPay)}}</view>
   </view>
 </view>
-<view wx:for="{{mx_list}}" wx:key="date">
+
+<view wx:for="{{billList}}" wx:key="index">
   <view class="mx">
-    <text>{{item.date}}</text>
+    <p>{{item.createDate}} {{item.weeks}}</p>
+    <p style="float: right;margin-right: 10rpx;" >
+    {{item.everyDayPayIn==0?(""):("收入:" + item.everyDayPayIn)}}   {{item.everyDayPayOut==0?(""):("支出:" + item.everyDayPayOut)}}
+    </p>
   </view>
-  <view wx:for="{{item.icon_list}}" wx:key='index' wx:for-item="cell">
+  <view wx:for="{{item.bills}}" wx:key='index' wx:for-item="bill">
     <view class="mx-mx">
-      <button class="btn" style="width:100%" bindtap="toDetail" data-date="{{item.date}}" data-icon_name="{{cell.icon_name}}" data-remark="{{cell.remark}}" data-icon_type="{{cell.icon_type}}" data-money="{{cell.money}}" data-icon_url="{{cell.icon_url}}" data-nid="{{cell.nid}}">
+      <button class="btn" style="width:100%" bindtap="toDetail" data-id="{{bill.id}}">
         <view>
-          <image class="mx-img" src="{{cell.icon_url}}"></image>
+          <image class="mx-img" src="{{bill.imgUrl}}"></image>
         </view>
         <view class="text-box">
-          <text class="mx-name">{{cell.icon_name}}</text>
-          <text>{{cell.remark}}</text>
-          <text class="mx-num">{{cell.money}}</text>
+          <text class="mx-name">{{(bill.remake==null || bill.remake=="")?bill.name:bill.remake}}</text>
+          <text class="mx-num">{{bill.money}}</text>
         </view>
       </button>
     </view>
-  </view>
-</view>
+  </view> 
+</view> 
+
+<!-- 保留两位小数 -->
+<wxs module="we">
+ var toFixed = function (value) {
+ return value.toFixed(2);
+}
+module.exports = {
+  toFixed :toFixed
+}
+</wxs>

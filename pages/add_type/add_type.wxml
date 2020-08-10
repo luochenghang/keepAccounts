@@ -1,0 +1,18 @@
+
+  <view class="top" style="border-bottom: 1px solid #ccc;height: 65px;">
+      <image  src="{{icon_url}}" class="typeicon"></image>
+      <input class="typeinput" bindinput="nameInput" placeholder="请输入类别名称(不超过四个字)"></input>
+      <text bindtap="ok" class="okbutton">保存</text>
+  </view>
+
+  <view class='content'>
+    
+  <scroll-view class='jz-item' scroll-y='true'>
+      <view class="item-wrapper">
+        <view class='item' wx:for="{{iconList}}" wx:key="index">
+          <image class='{{selectedIconId == item.id ? "red": "blue"}}' bindtap='iconClick' data-name='{{item.name}}' data-url='{{item.imgUrl}}' data-id='{{item.id}}' src='{{item.imgUrl}}'></image>
+        </view>
+       </view>
+    </scroll-view>
+
+  </view>

@@ -1,0 +1,9 @@
+<!--pages/statistics/childCpns/pie/pie.wxml-->
+<view class="container" hidden="{{currentIndex === 1}}" >
+  <ec-canvas id="mychart-dom-pie" 
+             canvas-id="mychart-pie" 
+             ec="{{ ec }}"
+             bindtap="click"
+  ></ec-canvas>
+</view>
+

@@ -41,7 +41,7 @@
 .year{
   margin-left: 20rpx;
   font-size: 24rpx;
-  color: #a9b7b7;
+  color: #000;
   /* background-color: blue; */
 }
 
@@ -61,7 +61,7 @@
 
 .shouru text{
   font-size: 30rpx;
-  color: #a9b7b7;
+  color: #000;
 }
 
 .zhichu{
@@ -70,7 +70,7 @@
 }
 .zhichu text{
   font-size: 30rpx;
-  color: #a9b7b7;
+  color: #000;
 }
 
 .mx{
@@ -78,7 +78,7 @@
   color: #a9b7b7;
   padding: 20rpx;
   border-bottom-color: #a9b7b7;
-  border-bottom-width: 3rpx;
+  border-bottom-width: 1rpx;
   border-bottom-style: solid;
 }
 
@@ -93,22 +93,24 @@
 .mx-mx{
   font-size: 35rpx;
   color: #0a0a0a;
-  padding: 40rpx;
-  /* border-bottom-color: #a9b7b7; */
-  /* border-bottom-width: 3rpx; */
-  /* border-bottom-style: solid; */
+  padding: 40rpx 20rpx 20rpx;
+  border-bottom-color: #a9b7b7; 
+  border-bottom-width: 1rpx; 
+  border-bottom-style: solid;
 }
 
 .text-box{
   padding: 10rpx;
   /* border-bottom: 1rpx solid #a9b7b7; */
   height: 50rpx;
+  font-weight: normal;
+
 }
 
 .mx-name{
 float: left;
 line-height: 50rpx;
-margin-left: 40rpx;
+margin-left: 20rpx;
 
 }
 

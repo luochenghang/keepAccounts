@@ -31,7 +31,7 @@ function send(requestInfo, methodType) {
           resolve(res)
         } else if (res.data.code === 3000) {
           wx.navigateTo({
-            url: '/pages/authorize/index',
+            url: '/pages/login/login',
           })
           reject()
         }else {

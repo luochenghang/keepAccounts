@@ -1,2 +1,28 @@
-<!--pages/tubiao/tubiao.wxml-->
-<text>pages/tubiao/tubiao.wxml</text>
+<view class="nav-top">
+<view class="value">
+    <picker bindchange="bindPickerChange" value="{{index}}" range="{{type}}">
+    <view class="picker">
+      {{type[index]}}<image class="downSelect" src="/images/down.png" />
+    </view>
+  </picker>
+    </view>
+
+    <view class='nav'>
+      <view class='nav-item {{dateType == 1 ? "nav-active" : ""}}' bindtap='dateTypeClick' data-item='1'>
+        周
+      </view>
+      <view style="border-left:1px solid #2c2c2c;border-right:1px solid #2c2c2c;" class='nav-item  {{dateType == 2 ? "nav-active" : ""}}' bindtap="dateTypeClick" data-item='2'>
+        月
+      </view>
+      <view class='nav-item  {{dateType == 3 ? "nav-active" : ""}}' bindtap="dateTypeClick" data-item='3'>
+        年
+      </view>
+    </view>
+
+      <scroll-view class="tab" scroll-x scroll-left="{{tabScroll}}" scroll-with-animation="true">
+    <block wx:for="{{menuList}}" wx:key="index">
+      <view class="tab-item {{currentTab == index ? 'active' : ''}}" data-current="{{index}}" bindtap='clickMenu'>{{item.name}}</view>
+    </block>
+  </scroll-view>
+  </view>
+

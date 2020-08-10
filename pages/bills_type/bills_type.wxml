@@ -1,0 +1,29 @@
+<!--pages/mbook/addwater.wxml-->
+<view class="nav-top">
+	<view class='nav'>
+		<view class='nav-item {{type == 1 ? "nav-active" : ""}}' bindtap='outClick' data-item='1'>
+			支出
+		</view>
+		<view class='nav-item  {{type == 2 ? "nav-active" : ""}}' bindtap="inClick" data-item='2'>
+			收入
+		</view>
+	</view>
+</view>
+
+<view style="margin-top: 80rpx;margin-bottom: 44px;">
+	<view class="mx-mx" wx:for="{{iconList}}" wx:key="index">
+		<button class="btn" style="width:100%">
+			<view>
+				<image class="mx-img" src="{{item.imgUrl}}"></image>
+			</view>
+			<view class="text-box">
+				<text class="mx-name">{{item.name}}</text>
+				<view class="mx-num" data-id="{{item.id}}" bindtap="delType"><image class="mx-img" style="background-color:#fff;" src="/images/del.png"></image></view>
+			</view>
+		</button>
+	</view>
+
+
+	</view>
+
+  <view class="bottom" bindtap="addType">+添加类别</view>

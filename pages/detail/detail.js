@@ -1,42 +1,54 @@
 //index.js
 //获取应用实例
 const app = getApp()
-var util = require('../../utils/util.js');
+const ApiManager = require('../../api/ApiManage.js')
+const ApiConst = require('../../api/ApiConst.js')
+var util = require("../../utils/util.js");
 Page({
   data: {
-    mx_list: "",
+    billList: [],
     in_money: 0.00,
     out_money: 0.00,
+    createDate:null,
+    UserBillsInfo:null,
   },
 
   onLoad: function() {
-    var that = this
-    var DATE = util.formatDate(new Date());
-    var year = util.formatYear(new Date());
-    var month = util.formatMonth(new Date());
-    that.setData({
-      date: DATE,
-      year: year,
-      month: month
+    
+  },
+_getUserBillsInfo:function(){
+  let that = this;
+    
+    let requestData = {
+      url: ApiConst.CountStatistics,
+      data: {}
+    }
+    
+    ApiManager.send(requestData, 'GET').then(res => {
+      if (res.data.code == 1000) {
+        that.setData({
+         UserBillsInfo: res.data.data,
+        }) 
+      }
     })
-    wx.getUserInfo({
-      success(res) {
-        var nickname = app.globalData.userInfo.nickName
-        wx.request({
-          url: 'http://127.0.0.1:8000/detail?nickname=' + nickname + "&year=" + year + "&month=" + month,
-          method: "GET",
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          success: function(res) {
-            console.log(res)
-            that.setData({
-              mx_list: res.data.bills,
-              out_money: res.data.out_money,
-              in_money: res.data.in_money
-            });
-          }
-        })
+},
+  _getBillList:function(){
+    let that = this;
+    
+    let requestData = {
+      url: ApiConst.getBillsList,
+      data: {}
+    }
+    if(that.data.createDate != null)
+      requestData = {
+      url: ApiConst.getBillsList,
+      data: { createDate: that.data.createDate }
+    }
+    ApiManager.send(requestData, 'GET').then(res => {
+      if (res.data.code == 1000) {
+        that.setData({
+         billList: res.data.data,
+        }) 
       }
     })
   },
@@ -49,49 +61,33 @@ Page({
       year: e.detail.value.split('-')[0],
       month: e.detail.value.split('-')[1],
       // day: e.detail.value.split('-')[2],
+      createDate:e.detail.value+"-01", //构造参数
     })
-    var that = this
-    wx.getUserInfo({
-      success(res) {
-        var nickname = app.globalData.userInfo.nickName
-        var year = e.detail.value.split('-')[0]
-        var month = e.detail.value.split('-')[1]
-        console.log()
-        wx.request({
-          url: 'http://127.0.0.1:8000/detail?nickname=' + nickname + "&year=" + year + "&month=" + month,
-          method: "GET",
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          success: function (res) {
-            console.log(res)
-            that.setData({
-              mx_list: res.data.bills,
-              out_money: res.data.out_money,
-              in_money: res.data.in_money
-            });
-          }
-        })
-      }
-    })
+
+    this._getBillList();
+
   },
 
   toDetail: function(e) {
     // 跳转到详情页面
-    var icon_type = e.currentTarget.dataset.icon_type
-    var money = e.currentTarget.dataset.money
-    var icon_name = e.currentTarget.dataset.icon_name
-    var icon_url = e.currentTarget.dataset.icon_url
-    var remark = e.currentTarget.dataset.remark
-    var date = e.currentTarget.dataset.date
-    var nid = e.currentTarget.dataset.nid
-
+    var id = e.currentTarget.dataset.id
     wx.navigateTo({
-      url: '/pages/todetail/todetail?icon_type=' + icon_type +"&icon_name=" + icon_name + "&icon_url=" + icon_url + "&icon_money=" + money + "&remark=" + remark + "&date=" + date + "&nid=" + nid,
+      url: '/pages/todetail/todetail?id='+ id
     })
   },
   
   onShow(){
-    this.onLoad()
+    var that = this
+    var DATE = util.formatDate(new Date());
+    var year = util.formatYear(new Date());
+    var month = util.formatMonth(new Date());
+    that.setData({
+      date: DATE,
+      year: year,
+      month: month
+    })
+
+    that._getBillList()
+    that._getUserBillsInfo()
   }
 })

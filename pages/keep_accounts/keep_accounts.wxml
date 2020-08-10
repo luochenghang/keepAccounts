@@ -2,20 +2,20 @@
 <form bind:submit="formSubmit" report-submit="true" bindreset="formReset">
   <view class="nav-top">
     <view class='nav'>
-      <view class='nav-item {{current == 0 ? "nav-active" : ""}}' bindtap='outClick' data-item='0'>
+      <view class='nav-item {{current == 1 ? "nav-active" : ""}}' bindtap='outClick' data-item='1'>
         支出
       </view>
-      <view class='nav-item  {{current == 1 ? "nav-active" : ""}}' bindtap="inClick" data-item='1'>
+      <view class='nav-item  {{current == 2 ? "nav-active" : ""}}' bindtap="inClick" data-item='2'>
         收入
       </view>
     </view>
   </view>
 
-  <view class='content' current='{{current}}' bindchange='changeCurrent'>
+  <view class='content'>
     <!-- 支出 -->
-    <scroll-view class='jz-item' scroll-y='true' >
+    <!-- <scroll-view class='jz-item' scroll-y='true' >
       <view class="item-wrapper">
-        <view class='item' >
+        <view class='item' wx:for="{{iconList}}">
           <image class='red' bindtap='iconClick' data-name='{{item.name}}' data-url='{{item.url}}' data-id='{{index}}' src='/imges/icon/food.svg'></image>
           <text>餐饮</text>
         </view>
@@ -25,26 +25,29 @@
           <text>餐饮</text>
         </view>
       </view>
-    </scroll-view>
-
-    <!-- <scroll-view class='jz-item' scroll-y='true' hidden="{{current!='0'}}">
+    </scroll-view> -->
+  <scroll-view class='jz-item' scroll-y='true'>
       <view class="item-wrapper">
-        <view class='item' wx:for="{{out_iconList}}" wx:key="{{indexbgh}}">
-          <image class='{{data_out.iconSelected === index ? "red": "blue"}}' bindtap='iconClick' data-name='{{item.name}}' data-url='{{item.url}}' data-id='{{index}}' src='{{item.url}}'></image>
+        <view class='item' wx:for="{{iconList}}" wx:key="index">
+          <image class='{{selectedIconId == item.id ? "red": "blue"}}' bindtap='iconClick' data-name='{{item.name}}' data-url='{{item.imgUrl}}' data-id='{{item.id}}' src='{{item.imgUrl}}'></image>
           <text>{{item.name}}</text>
         </view>
+        <view class='item'>
+          <image class='blue' bindtap='setting'  src='/images/setting.png'></image>
+          <text>设置</text>
+        </view>
       </view>
-    </scroll-view> -->
+    </scroll-view>
 
     <!-- 收入 -->
-    <scroll-view class='jz-item' scroll-y='true' hidden="{{current!='1'}}">
+    <!-- <scroll-view class='jz-item' scroll-y='true' hidden="{{current!='1'}}">
       <view class="item-wrapper">
         <view class='item' wx:for="{{in_iconList}}" wx:key="{{index}}">
           <image class='{{data_in.iconSelected === index ? "red": "blue"}}' bindtap='iconClick' data-name='{{item.name}}' data-url='{{item.url}}' data-id='{{index}}' src='{{item.url}}'></image>
           <text>{{item.name}}</text>
         </view>
       </view>
-    </scroll-view>
+    </scroll-view> -->
   </view>
 </form>
 
@@ -79,7 +82,7 @@
         </picker>
       </view>
       <view class='btn-op jz-input-empty' bindtap='numInput' data-type='empty' bindtap='numInput' hover-class="btn-hover">清空</view>
-      <view class='btn-op jz-input-ok' data-nick_name="{{nick_name}}" data-type='{{icon_type}}' data-url="{{icon_url}}" data-name="{{icon_name}}" bindtap='ok' hover-class="btn-hover">保存</view>
+      <view class='btn-op jz-input-ok'  data-type='{{icon_type}}' bindtap='ok' hover-class="btn-hover">保存</view>
     </view>
   </view>
 </view>

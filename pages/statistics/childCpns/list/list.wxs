@@ -1,0 +1,66 @@
+
+//把addPage数据中的支出项拿出来
+var pay = function(addPage){
+  return addPage.filter(function(item){
+    return item.selectedTab === 0
+  })
+
+}
+// 把addPage数据中收入项拿出来
+var income = function(addPage){
+  return addPage.filter(function(value) {
+    return value.selectedTab === 1
+  })
+}
+// 计算总和
+var totalMoney = function(arr){
+  return arr.reduce(function(total,cur){
+    return total + parseFloat(cur.moneyValue)
+  },0)
+}
+//计算百分比
+var per = function(value,addPage){
+  var totalValue = totalMoney(pay(addPage))
+  var per1 = (value / totalValue) * 100
+  return per1.toFixed(0) + '%'
+}
+// 把相同项目的数据合并在一起,把moneyVlaue相加
+
+var merge = function (addPage) {
+  console.log('addPage', JSON.stringify(addPage))
+  // 1.过滤出addPage里的支出项
+  var arr = pay(addPage)
+  var totalPay = totalMoney(arr)
+  console.log('pay addPage', JSON.stringify(arr))
+  // 2.同一类目的归类
+  var map = {}
+  var dest = []
+  for(var i=0;i<arr.length;i++){
+    var ai = arr[i]
+    if(!map[ai.iconName]){
+      dest.push({
+        id: ai.id,
+        moneyValue: ai.moneyValue,
+        icon: ai.icon,
+        iconBgcolor: ai.iconBgcolor,
+        iconName: ai.iconName
+      })
+      map[ai.iconName]=ai;
+    }else{
+      for(var j=0;j<dest.length;j++){
+        var dj=dest[j]
+        if(dj.iconName === ai.iconName){
+          dj.moneyValue = parseFloat(dj.moneyValue) + parseFloat(ai.moneyValue)
+          break
+        }
+      }
+    }
+  }
+  return dest
+}
+module.exports = {
+  merge: merge,
+  pay: pay,
+  totalMoney: totalMoney,
+  per: per
+}

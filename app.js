@@ -57,9 +57,11 @@ App({
               } = res
               this.globalData.userInfo = userInfo
               this.globalData.loginData = loginData
-              this.login().then(res => wx.switchTab({
-                url: '/pages/bill/bill',
-              })
+              this.login().then(res => 
+                console.log(1)
+                // wx.switchTab({
+                //   url: '/pages/keep_accounts/keep_accounts',
+                // })
               )
               // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
               // 所以此处加入 callback 以防止这种情况

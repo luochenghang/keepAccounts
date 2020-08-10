@@ -1,18 +1,13 @@
-// pages/todetail/todetail.js
-var app = getApp()
+const ApiManager = require('../../api/ApiManage.js')
+const ApiConst = require('../../api/ApiConst.js')
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    icon_url: "",
-    icon_type: "",
-    money: "",
-    icon_name: "",
-    remark: "",
-    date: "",
-    nid: ""
+    id:0,
+    bill:null,
   },
 
   /**
@@ -21,59 +16,118 @@ Page({
   onLoad: function(options) {
     // 接受参数并设置
     console.log(options)
-    var p = options
+    var id = options.id
     this.setData({
-      date: p.date,
-      money: p.icon_money,
-      icon_name: p.icon_name,
-      icon_type: p.icon_type,
-      icon_url: p.icon_url,
-      remark: p.remark,
-      nid: p.nid,
+      id: id
     })
+this._getBillDetail()
+
   },
+
+_getBillDetail(){
+  let that = this;
+    
+  let requestData = {
+    url: ApiConst.getBills,
+    data: {id:that.data.id}
+  }
+  ApiManager.send(requestData, 'GET').then(res => {
+    if (res.data.code == 1000) {
+      that.setData({
+       bill: res.data.data,
+      }) 
+    }
+  })
+},
 
   // 编辑
   edit: function() {
-    console.log('获取到名字', this.data.icon_name)
-    wx.navigateTo({
-      url: '/pages/keep_accounts/keep_accounts',
+    var bill = this.data.bill
+    // 检测参数
+    if (bill.money == "" || bill.money==0) {
+      wx.showToast({
+        title: '请输入金额',
+        icon: 'none',
+        duration: 10000
+      })
+      setTimeout(function () {
+        wx.hideToast()
+      }, 2000)
+      return
+    }
+    if (bill.remake.length > 20) {
+      wx.showToast({
+        title: '备注不得超过10个汉字',
+        icon: 'none',
+        duration: 10000
+      })
+      setTimeout(function () {
+        wx.hideToast()
+      }, 2000)
+      return
+    }
+   
+    let that = this;
+    let requestData = {
+      url: ApiConst.editBills,
+      data: {
+        id:bill.id,
+        money:bill.money,
+        createDate:bill.createDate,
+        remake:bill.remake
+      }
+    }
+    ApiManager.send(requestData, 'POST').then(res => {
+
+      if (res.data.code == 1000) {
+        wx.navigateBack({
+          delta: 1
+        })
+      }
     })
   },
-
+  bindDateChange: function (e) {
+    console.log('picker发送选择改变，携带值为', e.detail);
+    this.setData({
+      'bill.createDate': e.detail.value
+    })
+  },
+  remakeInput:function(e){
+    this.setData({
+      'bill.remake': e.detail.value
+    })
+  },
+  moneyInput:function(e){
+    this.setData({
+      'bill.money': e.detail.value
+    })
+  },
   // 删除
   del: function() {
-    console.log('获取到id', this.data.nid)
+    var id = this.data.bill.id;
     // 询问是否删除
     var that = this
     wx.showModal({
-      title: '',
+      title: '删除提示',
       content: '是否确认删除',
       success(res) {
         if (res.confirm) {
           console.log('用户点击确定')
           // 向后段发起删除请求
-          wx.request({
-            url: 'http://127.0.0.1:8000/del',
-            method: "POST",
+          let requestData = {
+            url: ApiConst.delBills,
             data: {
-              "nid": that.data.nid,
-            },
-            headers: {
-              'Content-Type': 'application/json'
-            },
-            success(res) {
-              console.log(res)
-              // 返回上一页
+              id:id,
+            }
+          }
+          ApiManager.send(requestData, 'POST').then(res => {
+            if (res.data.code == 1000) {
               wx.navigateBack({
-                delta: 1,
+                delta: 1
               })
             }
           })
-
-        } else if (res.cancel) {
-          console.log('用户点击取消')
-        }
+        } 
       }
     })
 
@@ -93,38 +147,4 @@ Page({
 
   },
 
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function() {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function() {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function() {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function() {
-
-  }
 })

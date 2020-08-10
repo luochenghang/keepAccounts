@@ -1,12 +1,12 @@
 {
   "pages": [
-    "pages/login/login",
-    "pages/regist/index",
-    "pages/findpassword/index",
+    "pages/chart/chart",
     "pages/keep_accounts/keep_accounts",
     "pages/detail/detail",
-    "pages/chart/chart",
+    "pages/add_type/add_type",
+    "pages/bills_type/bills_type",
     "pages/bill/bill",
+    "pages/statistics/statistics",
     "pages/mine/mine",
     "pages/todetail/todetail"
   ],
@@ -30,7 +30,7 @@
       {
         "selectedIconPath": "images/tubiao2.png",
         "iconPath": "images/tubiao1.png",
-        "pagePath": "pages/chart/chart",
+        "pagePath": "pages/statistics/statistics",
         "text": "图表"
       },{
         "selectedIconPath": "images/jizhang2.png",

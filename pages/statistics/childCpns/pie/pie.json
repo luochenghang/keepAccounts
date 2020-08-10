@@ -1,6 +1,6 @@
 {
   "component": true,
   "usingComponents": {
-  },
-  "navigationBarTitleText": "记一笔"
+    "ec-canvas": "/ec-canvas/ec-canvas"
+  }
 }
