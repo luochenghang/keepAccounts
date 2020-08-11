@@ -1,19 +1,19 @@
 {
   "pages": [
+    "pages/mine/mine",
     "pages/chart/chart",
+    "pages/chart_detail/chart_detail",
     "pages/keep_accounts/keep_accounts",
     "pages/detail/detail",
     "pages/add_type/add_type",
     "pages/bills_type/bills_type",
     "pages/bill/bill",
-    "pages/statistics/statistics",
-    "pages/mine/mine",
     "pages/todetail/todetail"
   ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#8EC6C6",
-    "navigationBarTitleText": "记账",
+    "navigationBarTitleText": "我的记账本",
     "navigationBarTextStyle": "black"
   },
   "tabBar": {
@@ -30,19 +30,13 @@
       {
         "selectedIconPath": "images/tubiao2.png",
         "iconPath": "images/tubiao1.png",
-        "pagePath": "pages/statistics/statistics",
+        "pagePath": "pages/chart/chart",
         "text": "图表"
       },{
         "selectedIconPath": "images/jizhang2.png",
         "iconPath": "images/jizhang1.png",
         "pagePath": "pages/keep_accounts/keep_accounts",
         "text": "记账"
-      },
-      {
-        "selectedIconPath": "images/zhangdan2.png",
-        "iconPath": "images/zhangdan1.png",
-        "pagePath": "pages/bill/bill",
-        "text": "账单"
       },
       {
         "selectedIconPath": "images/wode2.png",

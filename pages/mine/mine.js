@@ -1,4 +1,7 @@
 var app = getApp()
+const ApiManager = require('../../api/ApiManage.js')
+const ApiConst = require('../../api/ApiConst.js')
+var util = require("../../utils/util.js");
 Page({
 
   /**
@@ -7,6 +10,7 @@ Page({
   data: {
     userimg: "",
     nickname: "",
+    UserBillsInfo:null,
   },
 
   /**
@@ -35,41 +39,62 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
-
+    this._getUserBillsInfo();
   },
 
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function() {
-
+  _getUserBillsInfo:function(){
+    let that = this;
+    
+    let requestData = {
+      url: ApiConst.CountStatistics,
+      data: {}
+    }
+    ApiManager.send(requestData, 'GET').then(res => {
+      if (res.data.code == 1000) {
+        that.setData({
+         UserBillsInfo: res.data.data,
+        }) 
+      }
+    })
   },
 
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function() {
-
+  onShareAppMessage() {
+    let _data = {
+      title: '我的记账本',
+      path: '/pages/mine/mine',
+      success: function(res) {
+        // 转发成功
+      },
+      fail: function(res) {
+        // 转发失败
+      }
+    }
   },
 
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function() {
+  exportFiles: function () {
+    var that = this
+    let requestData = {
+      url: ApiConst.exportData,
+      data: {}
+    }
+    ApiManager.send(requestData, 'POST').then(res => {
+      if (res.data.code == 1000) {
+        
+      }
+    })
+  },  
 
+  setting(){
+    wx.navigateTo({
+      url: '/pages/bills_type/bills_type?type=1',
+    })
   },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function() {
-
+  aboutUs: function() {
+    var that = this
+    wx.showModal({
+      title: '我的记账本',
+      content: '本小程序用于记录用户的财务情况，财务自由从此开始!',
+      showCancel: false
+    })
   },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function() {
-
-  }
 })

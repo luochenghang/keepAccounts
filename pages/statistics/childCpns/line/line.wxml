@@ -1,5 +1,0 @@
-<!--pages/statistics/childCpns/line/line.wxml-->
-<view class="container" hidden="{{currentIndex === 0}}" wx:if="{{currentIndex === 1}}">
-  <ec-canvas id="mychart-dom-line" canvas-id="mychart-line" ec="{{ ec }}"></ec-canvas>
-</view>
-

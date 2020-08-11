@@ -13,13 +13,23 @@ export const delBillsType = baseUrl + "bills/type/delBillsType"//删除用户账
 
 export const getSystemBillsTypeList = baseUrl + "bills/type/getSystemBillsTypeList"//获取系统账单类型
 
-
-
-
 export const editBills = baseUrl + "bills/bills/editBills"//编辑账单
 export const getBills = baseUrl + "bills/bills/getBills"//获取账单
 export const addBills = baseUrl + "bills/bills/addBills"//添加账单
 export const delBills = baseUrl + "bills/bills/delBills"//删除账单
 export const getBillsList = baseUrl + "bills/bills/getBillsList"//根据时间获取账单
+
+
+export const getWeekOrDays = baseUrl + "bills/bills/getWeekOrDays"//根据周月年 或者对应下面的日期数
+export const getChartsData = baseUrl + "bills/bills/getChartsData"//根据周月年 获得图表数据
+export const getChartsDataDetail = baseUrl + "bills/bills/getChartsDataDetail"//根据周月年 获得收入排行榜数据
+export const getBillsByRemakeAndTypeId = baseUrl + "bills/bills/getBillsByRemakeAndTypeId"//根据周月年以及排行榜中某一列的remake和类型id获得数据
+
+
+export const exportData = baseUrl + "bills/user/exportData"//导出数据
+
+
+
+
 
 

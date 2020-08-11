@@ -1,28 +1,88 @@
 <view class="nav-top">
-<view class="value">
-    <picker bindchange="bindPickerChange" value="{{index}}" range="{{type}}">
-    <view class="picker">
-      {{type[index]}}<image class="downSelect" src="/images/down.png" />
-    </view>
-  </picker>
+	<view class="value">
+		<picker bindchange="bindPickerChange" value="{{index}}" range="{{type}}">
+			<view class="picker">
+				{{type[index]}}
+				<image class="downSelect" src="/images/down.png" />
+			</view>
+		</picker>
+	</view>
+
+	<view class='nav'>
+		<view class='nav-item {{dateType == 1 ? "nav-active" : ""}}' bindtap='dateTypeClick' data-item='1'>
+			周
+		</view>
+		<view style="border-left:1px solid #2c2c2c;border-right:1px solid #2c2c2c;" class='nav-item  {{dateType == 2 ? "nav-active" : ""}}' bindtap="dateTypeClick" data-item='2'>
+			月
+		</view>
+		<view class='nav-item  {{dateType == 3 ? "nav-active" : ""}}' bindtap="dateTypeClick" data-item='3'>
+			年
+		</view>
+	</view>
+
+	<scroll-view class="tab" scroll-x scroll-left="{{tabScroll}}" scroll-with-animation="true">
+		<block wx:for="{{menuList}}" wx:key="index">
+			<view class="tab-item {{currentTab == index ? 'active' : ''}}" data-current="{{index}}" data-days="{{item.days}}" bindtap='clickMenu'>{{item.name}}</view>
+		</block>
+	</scroll-view>
+</view>
+
+
+<view style="margin-top:210rpx;height:50rpx;margin-left: 20rpx;color: #bbb;font-size: 13px;">
+	<view>{{type==0?"总支出":"总收入"}}：{{totalMoney}}元</view>
+	<view>平均值：{{we.toFixed(avgMoney)}}元</view>
+</view>
+
+<view class="containers">
+	<ec-canvas id="mychart-dom-line" canvas-id="mychart-line" bind:init="echartInit" ec="{{ ec }}"></ec-canvas>
+</view>
+
+<view style="height:30rpx;margin-left: 20rpx;color: #bbb;font-size: 13px;margin-bottom: 10px;">
+	<view>{{type==0?"支出":"收入"}}排行榜</view>
+</view>
+<view>
+    <view class="mx-mx" wx:for="{{billsList}}" wx:key="index">
+      <button class="btn" style="width:100%;padding: 8px 0px;" bindtap="toDetail" data-typeid="{{item.userBillsTypeId}}" data-remake="{{item.remake}}" 
+      wx:if="{{item.remake==''}}" data-name="{{item.name}}">
+        <view>
+          <image class="mx-img" src="{{item.imgUrl}}"></image>
+        </view>
+        <view class="text-box">
+          <text decode="true" class="mx-name">{{(item.remake=="")?item.name:item.remake}} &nbsp;{{we.toFixed(item.percentMoney*100)}}%</text>
+          <text class="mx-num">{{item.sumMoney}}</text>
+          <view class="progress-box">
+        <progress percent="{{item.percentMoney*100}}" backgroundColor="#fff" activeColor="#41C6AD" active stroke-width="3" />
+      </view>
+        </view>
+      </button>
+
+      <button class="btn" style="width:100%;padding: 8px 0px;" bindtap="toDetail" data-typeid="{{item.userBillsTypeId}}" data-remake="{{item.remake}}" 
+      wx:if="{{item.remake!=''}}" data-name="{{item.remake}}">
+        <view>
+          <image class="mx-img" src="{{item.imgUrl}}"></image>
+        </view>
+        <view class="text-box">
+          <text decode="true" class="mx-name">{{(item.remake=="")?item.name:item.remake}} &nbsp;{{item.percentMoney*100}}%</text>
+          <text class="mx-num">{{item.sumMoney}}</text>
+          <view class="progress-box">
+        <progress percent="{{item.percentMoney*100}}" backgroundColor="#fff" activeColor="#41C6AD" active stroke-width="3" />
+      </view>
+        </view>
+      </button>
     </view>
 
-    <view class='nav'>
-      <view class='nav-item {{dateType == 1 ? "nav-active" : ""}}' bindtap='dateTypeClick' data-item='1'>
-        周
-      </view>
-      <view style="border-left:1px solid #2c2c2c;border-right:1px solid #2c2c2c;" class='nav-item  {{dateType == 2 ? "nav-active" : ""}}' bindtap="dateTypeClick" data-item='2'>
-        月
-      </view>
-      <view class='nav-item  {{dateType == 3 ? "nav-active" : ""}}' bindtap="dateTypeClick" data-item='3'>
-        年
-      </view>
-    </view>
+  </view> 
 
-      <scroll-view class="tab" scroll-x scroll-left="{{tabScroll}}" scroll-with-animation="true">
-    <block wx:for="{{menuList}}" wx:key="index">
-      <view class="tab-item {{currentTab == index ? 'active' : ''}}" data-current="{{index}}" bindtap='clickMenu'>{{item.name}}</view>
-    </block>
-  </scroll-view>
-  </view>
 
+
+
+
+<!-- 保留两位小数 -->
+<wxs module="we">
+ var toFixed = function (value) {
+ return value.toFixed(2);
+}
+module.exports = {
+  toFixed :toFixed
+}
+</wxs>

@@ -1,0 +1,37 @@
+
+<view style="height:30rpx;margin-left: 20rpx;color: #bbb;font-size: 13px;margin-bottom: 10px;">
+	<view>{{name}}{{params.type==1?"支出":"收入"}}</view>
+</view>
+<view>
+    <view class="mx-mx" wx:for="{{billsList}}" wx:key="index">
+      <button class="btn" style="width:100%;padding: 8px 0px;" bindtap="toDetail" data-id="{{item.id}}">
+        <view>
+          <image class="mx-img" src="{{item.imgUrl}}"></image>
+        </view>
+        <view class="text-box">
+          <text decode="true" class="mx-name">{{(item.remake==null || item.remake=="")?item.name:item.remake}} &nbsp;{{we.toFixed(item.percentMoney)*100}}%</text>
+          <text class="mx-num">{{item.money}}</text>
+          <view class="progress-box">
+        <progress percent="{{item.percentMoney*100}}" backgroundColor="#fff" activeColor="#41C6AD" active stroke-width="3" />
+      </view>
+      <view style="color: #bbb;float: left;font-size: 12px;margin-left: 35rpx;margin-top: 10rpx;">
+      {{item.createDate}}</view>
+        </view>
+      </button>
+    </view>
+
+  </view> 
+
+
+
+
+
+<!-- 保留两位小数 -->
+<wxs module="we">
+ var toFixed = function (value) {
+ return value.toFixed(2);
+}
+module.exports = {
+  toFixed :toFixed
+}
+</wxs>

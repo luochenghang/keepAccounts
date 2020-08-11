@@ -1,0 +1,47 @@
+
+.mx-mx{
+  font-size: 35rpx;
+  color: #0a0a0a;
+  padding: 10rpx 20rpx 10rpx;
+  border-bottom-color: #a9b7b7; 
+  border-bottom-width: 1rpx; 
+  border-bottom-style: solid;
+}
+
+.text-box{
+  /* padding: 10rpx 0rpx; */
+  /* border-bottom: 1rpx solid #a9b7b7; */
+  height: 50rpx;
+  font-weight: normal;
+  width: 90%;
+  margin-left: 50rpx;
+  
+}
+
+.mx-name{
+float: left;
+line-height: 50rpx;
+margin-left: 20rpx;
+
+}
+
+.mx-num{
+float: right;
+/* margin-right: 20rpx; */
+}
+.mx-img{
+    /* margin-top: 20rpx; */
+  width: 50rpx;
+  height: 50rpx;
+  border-radius: 50%;
+  background-color: #8EC6C6;
+  padding: 10rpx;
+  float: left;
+}
+
+.progress-box{
+  float: left;
+width: 620rpx;
+margin-left: 34rpx;
+
+}

@@ -8,37 +8,72 @@
     <text data-nickname="{{nickname}}">{{nickname}}</text>
   </view>
 
+  <view class="navBar">
+    <view class="tab">
+      <text style="font-weight: bold;">{{UserBillsInfo.totalBillsNums}}</text>
+      <text>记账总笔数</text>
+    </view>
+     <view class="tab">
+      <text style="font-weight: bold;">{{UserBillsInfo.totalKeepAccountsDays}}</text>
+      <text>记账总天数</text>
+    </view>
+     <view class="tab">
+      <text style="font-weight: bold;">{{UserBillsInfo.totalDays}}</text>
+      <text>记账距今天数</text>
+    </view>
+  </view>
 </view>
 
 <view class="fun">
-  <view>
-    <button class="item" style="width: 100%;">
 
-    <image class="icon" src="../../imges/dingshi.svg"></image>
+<view>
+    <button class="item" style="width: 100%;" bindtap="setting">
+    <image class="icon" src="/images/type.svg"></image>
     <view class="ability">
-      <text>定时提醒</text>
-      <image class="right" src="../../imges/right.svg"></image>
+      <text>类别设置</text>
+      <image class="right" src="/images/right.svg"></image>
     </view>
     </button>
   </view>
 
   <view>
-    <button class="item" style="width: 100%;" open-type="feedback">
-      <image class="icon" src="../../imges/fankui.svg"></image>
+    <button class="item" style="width: 100%;" bindtap="exportFiles">
+    <image class="icon" src="/images/alarm.svg"></image>
+    <view class="ability">
+      <text>导出文件</text>
+      <image class="right" src="/images/right.svg"></image>
+    </view>
+    </button>
+  </view>
+
+
+<view>
+    <button class="item" style="width: 100%;" open-type="share">
+      <image class="icon" src="/images/share.svg"></image>
       <view class="ability">
-        <text>意见反馈</text>
-        <image class="right" src="../../imges/right.svg"></image>
+        <text>分享给好友</text>
+        <image class="right" src="/images/right.svg"></image>
       </view>
     </button>
   </view>
 
   <view>
-    <button class="item" style="width: 100%;">
+    <button class="item" style="width: 100%;" open-type="feedback">
+      <image class="icon" src="/images/help.svg"></image>
+      <view class="ability">
+        <text>帮助</text>
+        <image class="right" src="/images/right.svg"></image>
+      </view>
+    </button>
+  </view>
 
-    <image class="icon" src="../../imges/guanyu.svg"></image>
+  <view>
+    <button class="item" style="width: 100%;" bindtap="aboutUs">
+
+    <image class="icon" src="/images/about.svg"></image>
     <view class="ability">
-      <text>关于记账宝</text>
-      <image class="right" src="../../imges/right.svg"></image>
+      <text>关于记账本</text>
+      <image class="right" src="/images/right.svg"></image>
     </view>
     </button>
   </view>

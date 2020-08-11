@@ -6,6 +6,8 @@ let util = require('./utils/util.js')
 App({
 
   globalData: {
+backgroundColor:"#fff",
+
     isAdmin: false, //判断是否已经登录后端统计了
     userInfo: null,
     vipInfo: null,
@@ -58,9 +60,9 @@ App({
               this.globalData.userInfo = userInfo
               this.globalData.loginData = loginData
               this.login().then(res => 
-                console.log(1)
+                 console.log(1)
                 // wx.switchTab({
-                //   url: '/pages/keep_accounts/keep_accounts',
+                //   url: '/pages/chart/chart',
                 // })
               )
               // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
