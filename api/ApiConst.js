@@ -27,6 +27,9 @@ export const getBillsByRemakeAndTypeId = baseUrl + "bills/bills/getBillsByRemake
 
 
 export const exportData = baseUrl + "bills/user/exportData"//导出数据
+export const getUserFilesList = baseUrl + "bills/user/getUserFilesList"//查询导出数据
+
+export const getUseHelp = baseUrl + "bills/help/getUseHelp"//查询使用帮助
 
 
 

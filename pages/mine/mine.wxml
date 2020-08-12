@@ -38,7 +38,7 @@
 
   <view>
     <button class="item" style="width: 100%;" bindtap="exportFiles">
-    <image class="icon" src="/images/alarm.svg"></image>
+    <image class="icon" src="/images/export.svg"></image>
     <view class="ability">
       <text>导出文件</text>
       <image class="right" src="/images/right.svg"></image>
@@ -58,7 +58,7 @@
   </view>
 
   <view>
-    <button class="item" style="width: 100%;" open-type="feedback">
+    <button class="item" style="width: 100%;" bindtap="help">
       <image class="icon" src="/images/help.svg"></image>
       <view class="ability">
         <text>帮助</text>

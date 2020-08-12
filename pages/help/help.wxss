@@ -1,0 +1,25 @@
+/* pages/help.wxss */
+.top{
+  width: 95%;
+  margin: 10px;
+}
+
+.title{
+  font-size: 24px;
+  font-weight: bold;
+}
+.time{
+  color: #aab;
+  font-size: 30rpx;
+  margin-top: 10px;
+}
+
+.problem{
+  font-weight: bold;
+  font-size: 16px;
+  margin-top: 20px;
+}
+.answer{
+  text-indent: 2em;
+  margin-top: 10px;
+}

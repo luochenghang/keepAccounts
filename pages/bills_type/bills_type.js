@@ -74,8 +74,8 @@ Page({
     }
     let that = this
     wx.showModal({
-      title: '删除类别',
-      content: '您确定删除该类型吗',
+      title: '删除类型',
+      content: '您将删除该类型以及该类型下所有的账单，您确定删除该类型吗?',
       confirmText: "确定",
       cancelText: "取消",
       success: function (res) {

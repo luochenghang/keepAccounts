@@ -1,6 +1,9 @@
 {
   "pages": [
+    "pages/login/login",
+    "pages/help/help",
     "pages/mine/mine",
+    "pages/export_list/export_list",
     "pages/chart/chart",
     "pages/chart_detail/chart_detail",
     "pages/keep_accounts/keep_accounts",
@@ -18,29 +21,30 @@
   },
   "tabBar": {
     "color": "#a9b7b7",
-    "selectedColor": "#2c2c2c",
+    "selectedColor": "#8EC6C6",
     "borderStyle": "black",
     "list": [
       {
-        "selectedIconPath": "images/mingxi2.png",
-        "iconPath": "images/mingxi1.png",
+        "selectedIconPath": "images/detail_selected.png",
+        "iconPath": "images/detail.png",
         "pagePath": "pages/detail/detail",
         "text": "明细"
       },
       {
-        "selectedIconPath": "images/tubiao2.png",
-        "iconPath": "images/tubiao1.png",
+        "selectedIconPath": "images/chart_selected.png",
+        "iconPath": "images/chart.png",
         "pagePath": "pages/chart/chart",
         "text": "图表"
-      },{
-        "selectedIconPath": "images/jizhang2.png",
-        "iconPath": "images/jizhang1.png",
+      },
+      {
+        "selectedIconPath": "images/add_selected.png",
+        "iconPath": "images/add.png",
         "pagePath": "pages/keep_accounts/keep_accounts",
         "text": "记账"
       },
       {
-        "selectedIconPath": "images/wode2.png",
-        "iconPath": "images/wode1.png",
+        "selectedIconPath": "images/mine_selected.png",
+        "iconPath": "images/mine.png",
         "pagePath": "pages/mine/mine",
         "text": "我的"
       }

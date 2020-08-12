@@ -33,7 +33,7 @@
           <text>{{item.name}}</text>
         </view>
         <view class='item'>
-          <image class='blue' bindtap='setting'  src='/images/setting.png'></image>
+          <image class='blue' bindtap='setting'  src='/images/icon/shezhi.svg'></image>
           <text>设置</text>
         </view>
       </view>

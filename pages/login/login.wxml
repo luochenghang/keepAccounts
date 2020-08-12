@@ -1,24 +1,8 @@
-<!-- <view class="content">
-    <view class = "logo">
-        <image mode="aspectFit" src="/images/logo.png"></image>
-    </view>
-    <form bindsubmit="formSubmit">
-        <view class="input-area">
-        <image mode="aspectFit" class = "images" src="/images/name.png"></image>
-          <input id="username" name="username" maxlength='40' type="text" placeholder="邮箱/手机号" />
-          <image class = "images" mode="aspectFit" src="/images/key.png"></image>
-          <input id="password" name="password" maxlength='20' type="password" placeholder="密码" />
-        </view>
-        <view class="btn-area">
-            <button  disabled="{{disabled}}" style="background-color:{{loginBtnBgBgColor}}"   formType="submit"  loading="{{btnLoading}}"> {{loginBtnTxt}} </button>
-            <view class="txt-area">
-                <navigator url="/pages/findpassword/index"><text class="forgot-password">忘记密码？</text></navigator>
-                <navigator url="/pages/regist/index"><text class="register">注册账号</text></navigator> 
-            </view>
-        </view>
-    </form>
 
-    
-</view> -->
+<image src="/images/login.png" style="width:100%"></image>
 
-<button type="primary" class="weui-btn" role="button" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo" value="">同意授权登录</button>
+<view class="content">
+<view class="my">我的记账本</view>
+<view class="start">我的收支从此开始</view>
+<button style="background-color: #8EC6C6;" type="primary" class="weui-btn" role="button" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo" value="">同意授权登录</button>
+</view>

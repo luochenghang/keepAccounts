@@ -10,13 +10,13 @@ Page({
   data: {
     userimg: "",
     nickname: "",
-    UserBillsInfo:null,
+    UserBillsInfo: null,
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function(e) {
+  onLoad: function (e) {
     var that = this
     wx.getUserInfo({
       success(res) {
@@ -31,20 +31,20 @@ Page({
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function() {
+  onReady: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function() {
+  onShow: function () {
     this._getUserBillsInfo();
   },
 
-  _getUserBillsInfo:function(){
+  _getUserBillsInfo: function () {
     let that = this;
-    
+
     let requestData = {
       url: ApiConst.CountStatistics,
       data: {}
@@ -52,8 +52,8 @@ Page({
     ApiManager.send(requestData, 'GET').then(res => {
       if (res.data.code == 1000) {
         that.setData({
-         UserBillsInfo: res.data.data,
-        }) 
+          UserBillsInfo: res.data.data,
+        })
       }
     })
   },
@@ -62,34 +62,34 @@ Page({
     let _data = {
       title: '我的记账本',
       path: '/pages/mine/mine',
-      success: function(res) {
+      success: function (res) {
         // 转发成功
       },
-      fail: function(res) {
+      fail: function (res) {
         // 转发失败
       }
     }
   },
 
   exportFiles: function () {
-    var that = this
-    let requestData = {
-      url: ApiConst.exportData,
-      data: {}
-    }
-    ApiManager.send(requestData, 'POST').then(res => {
-      if (res.data.code == 1000) {
-        
-      }
+    wx.navigateTo({
+      url: '/pages/export_list/export_list',
     })
-  },  
 
-  setting(){
+  },
+  help: function () {
+    wx.navigateTo({
+      url: '/pages/help/help',
+    })
+
+  },
+
+  setting() {
     wx.navigateTo({
       url: '/pages/bills_type/bills_type?type=1',
     })
   },
-  aboutUs: function() {
+  aboutUs: function () {
     var that = this
     wx.showModal({
       title: '我的记账本',

@@ -1,0 +1,21 @@
+<view class="row" wx:for="{{FilesList}}" wx:key="index" data-id="">
+    <!-- 名称与语句 -->
+    <view class="content">
+        <view class="top">
+            <view class="nickname">{{item.remarks}}
+            </view>
+        </view>
+        <view class="top">
+            <view class="datetime">{{item.createDate}}</view>
+        </view>
+        <view class="bottom">
+            <view class="sentence">路径: {{item.filePath}}</view>
+        </view>
+    </view>
+    <view class="copy" bindtap="copyValue" data-url="{{item.filePath}}" >复制路径</view>
+</view>
+
+
+<view class="bottom_export">
+  <text class="edit" bindtap="exportFiles">导出文件</text>
+</view>

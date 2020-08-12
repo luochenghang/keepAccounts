@@ -6,8 +6,6 @@ let util = require('./utils/util.js')
 App({
 
   globalData: {
-backgroundColor:"#fff",
-
     isAdmin: false, //判断是否已经登录后端统计了
     userInfo: null,
     vipInfo: null,
@@ -60,10 +58,9 @@ backgroundColor:"#fff",
               this.globalData.userInfo = userInfo
               this.globalData.loginData = loginData
               this.login().then(res => 
-                 console.log(1)
-                // wx.switchTab({
-                //   url: '/pages/chart/chart',
-                // })
+                wx.switchTab({
+                  url: '/pages/detail/detail',
+                })
               )
               // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
               // 所以此处加入 callback 以防止这种情况
@@ -86,7 +83,7 @@ backgroundColor:"#fff",
       util.loginTip(res.data.msg)
     } else if (data.code === 3000) {
       wx.navigateTo({
-        url: '/pages/auth/auth',
+        url: '/pages/login/login',
       })
     }
     wx.hideLoading()
