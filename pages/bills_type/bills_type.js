@@ -92,8 +92,9 @@ Page({
               })
               setTimeout(function () {
                 wx.hideToast()
+                that._getIconList();
               }, 2000)
-              that._getIconList();
+              
             }
           })
         }

@@ -29,7 +29,7 @@
 
 
 <view style="margin-top:210rpx;height:50rpx;margin-left: 20rpx;color: #bbb;font-size: 13px;">
-	<view>{{type==0?"总支出":"总收入"}}：{{totalMoney}}元</view>
+	<view>{{index==0?"总支出":"总收入"}}：{{totalMoney}}元</view>
 	<view>平均值：{{we.toFixed(avgMoney)}}元</view>
 </view>
 
@@ -38,7 +38,7 @@
 </view>
 
 <view style="height:30rpx;margin-left: 20rpx;color: #bbb;font-size: 13px;margin-bottom: 10px;">
-	<view>{{type==0?"支出":"收入"}}排行榜</view>
+	<view>{{index==0?"支出":"收入"}}排行榜</view>
 </view>
 <view>
     <view class="mx-mx" wx:for="{{billsList}}" wx:key="index">

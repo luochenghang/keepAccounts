@@ -41,6 +41,8 @@ Page({
       url: '/pages/todetail/todetail?id='+ id
     })
   },
+
+  
   _getBillsDetail:function(){
     var that = this
     let requestData = {

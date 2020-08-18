@@ -62,4 +62,17 @@ console.log(ev)
       }
     })
   },
+  
+  onShareAppMessage() {
+    let _data = {
+      title: '海豚记账簿',
+      path: '/pages/login/login',
+      success: function (res) {
+        // 转发成功
+      },
+      fail: function (res) {
+        // 转发失败
+      }
+    }
+  },
 })

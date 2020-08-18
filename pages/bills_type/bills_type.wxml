@@ -10,7 +10,7 @@
 	</view>
 </view>
 
-<view style="margin-top: 80rpx;margin-bottom: 44px;">
+<view style="margin-top: 80rpx;margin-bottom: 70px;">
 	<view class="mx-mx" wx:for="{{iconList}}" wx:key="index">
 		<button class="btn" style="width:100%">
 			<view>

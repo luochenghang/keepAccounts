@@ -3,7 +3,7 @@ const ApiUrl = {
   onLine: 'https://luoch.cn/'
 }
 
-let baseUrl = ApiUrl.develop
+let baseUrl = ApiUrl.onLine
 export const login = baseUrl + "bills/user/login"//登录接口
 export const CountStatistics = baseUrl + "bills/user/CountStatistics"//获取登录用户的个人信息
 

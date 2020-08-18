@@ -28,9 +28,21 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (e) {
-
+    this.setData({
+      remark: '',
+      date: util.formatDate(new Date()),
+      value: '',
+      nick_name: "",
+      ico_name: '',
+      icon_url: '',
+      selectedIconId: 0,
+      icon_type: 1,
+      iconList: [],
+      current: 1
+    })
   },
   onShow: function () {
+    this.onLoad();
     this._getIconList();
   },
   bindDateChange: function (e) {
@@ -39,7 +51,19 @@ Page({
       date: e.detail.value
     })
   },
-
+  
+  onShareAppMessage() {
+    let _data = {
+      title: '海豚记账簿',
+      path: '/pages/login/login',
+      success: function (res) {
+        // 转发成功
+      },
+      fail: function (res) {
+        // 转发失败
+      }
+    }
+  },
   // 请求获取标签
   _getIconList: function () {
 
@@ -203,9 +227,9 @@ Page({
       }
     })
   },
-  setting(){
+  setting() {
     wx.navigateTo({
-      url: '/pages/bills_type/bills_type?type='+ this.data.current,
+      url: '/pages/bills_type/bills_type?type=' + this.data.current,
     })
   },
 

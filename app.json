@@ -10,7 +10,6 @@
     "pages/detail/detail",
     "pages/add_type/add_type",
     "pages/bills_type/bills_type",
-    "pages/bill/bill",
     "pages/todetail/todetail"
   ],
   "window": {

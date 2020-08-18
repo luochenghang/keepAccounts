@@ -14,7 +14,13 @@ Page({
   },
 
   onLoad: function() {
-    
+    this.setData({
+      billList: [],
+    in_money: 0.00,
+    out_money: 0.00,
+    createDate:null,
+    UserBillsInfo:null,
+    })
   },
 _getUserBillsInfo:function(){
   let that = this;
@@ -75,7 +81,19 @@ _getUserBillsInfo:function(){
       url: '/pages/todetail/todetail?id='+ id
     })
   },
-  
+    
+  onShareAppMessage() {
+    let _data = {
+      title: '海豚记账簿',
+      path: '/pages/login/login',
+      success: function (res) {
+        // 转发成功
+      },
+      fail: function (res) {
+        // 转发失败
+      }
+    }
+  },
   onShow(){
     var that = this
     var DATE = util.formatDate(new Date());
@@ -86,7 +104,7 @@ _getUserBillsInfo:function(){
       year: year,
       month: month
     })
-
+   that.onLoad();
     that._getBillList()
     that._getUserBillsInfo()
   }

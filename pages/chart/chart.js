@@ -57,6 +57,19 @@ Page({
       url: '/pages/chart_detail/chart_detail?userBillsTypeId=' + userBillsTypeId + '&remake=' + remake + params
     })
   },
+
+  onShareAppMessage() {
+    let _data = {
+      title: '海豚记账簿',
+      path: '/pages/login/login',
+      success: function (res) {
+        // 转发成功
+      },
+      fail: function (res) {
+        // 转发失败
+      }
+    }
+  },
   onLoad: function () {
     wx.getSystemInfo({ // 获取当前设备的宽高，文档有
       success: (res) => {
